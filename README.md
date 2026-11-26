@@ -1,8 +1,8 @@
 # THE WORLD TODAY — 25 November 2026
 
-[![make.fun bounty](https://img.shields.io/badge/make.fun-news--image--20261125-blue)](https://make.fun/bounty/news-image-20261125)
-[![date](https://img.shields.io/badge/date-25%20Nov%202026-green)](https://make.fun/bounty/news-image-20261125)
-[![stories](https://img.shields.io/badge/stories-55-orange)](https://make.fun/bounty/news-image-20261125)
+[![make.fun · news-image-20261125](https://make.fun/badge/news-image-20261125.svg)](https://make.fun/bounty/news-image-20261125?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261125)
+[![rank](https://make.fun/badge/news-image-20261125/tiVan0/makefun-news-image-20261125/rank.svg)](https://make.fun/bounty/news-image-20261125/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261125)
+[![reward](https://make.fun/badge/news-image-20261125/tiVan0/makefun-news-image-20261125/reward.svg)](https://make.fun/bounty/news-image-20261125?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261125)
 
 One image that sums up the world's news of **Wednesday 25 November 2026**:
 55 stories across 10 regions and 21 fields, drawn by hand in code — no
