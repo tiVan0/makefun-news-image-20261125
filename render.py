@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
-"""Render news-image-20261125 v2 entry.png (1024x1024, <=1 MiB).
+"""Render news-image-20261125 v3-B entry.png (1024x1024, <=1 MiB).
+Rebalance of the v2 winner ("THE WORLD TODAY"): 50 stories (3 big + 10
+medium + 37 ALSO, the #1 formula), bigger ALSO type, roomier layout, and
+the Shenzhou Earth-arc clipped inside its illustration (v2's arc spilled
+over the body text). Facts carried from verified v2; two mediums demoted
+to ALSO (ZNPP, US data) so the facts stay in the paper; five weakest
+ALSO lines dropped (see research/verification-notes.md).
 Drawn by hand in code with PIL. Deterministic: no timestamps, no random,
-fixed fonts, fixed layout. Written fresh for Builder A (cand-a).
+fixed fonts, fixed layout.
 """
 import os
 from PIL import Image, ImageDraw, ImageFont
@@ -115,19 +121,19 @@ MEDIUM = [
     dict(num="4", place="LONDON", tag="C", icon="bolt",
          kick="+26%",
          head="UK ENERGY BILLS TO JUMP 26% IN JANUARY",
-         body=("Ofgem lifts the price cap: a typical bill rises "
+         body=("Ofgem lifts the cap: a typical bill rises "
                "£1,723 to £2,166 (+£443 a year). Government pays £100 to "
                "~20m homes.")),
     dict(num="5", place="CANBERRA", tag="C", icon="shield",
          kick="NO FOREIGN BASES",
-         head="SOLOMONS PICK AUSTRALIA AS TOP SECURITY PARTNER",
+         head="SOLOMONS NAME AUSTRALIA TOP PARTNER",
          body=("Treaty in Canberra: no foreign military base on Solomons "
                "soil; $740m Australian support over a decade; China's "
                "pact lapses.")),
     dict(num="6", place="DHAKA", tag="C", icon="factory",
          kick="TK17,000",
          head="GARMENT WAGE SET AT TK17,000 (+36%)",
-         body=("Wage board votes 4-2 after talks ending 04:00: minimum "
+         body=("Wage board votes 4-2: minimum "
                "rises Tk12,500 to Tk17,000 from December. Workers wanted "
                "Tk18,000.")),
     dict(num="7", place="CARTAGENA", tag="C", icon="store",
@@ -150,14 +156,12 @@ MEDIUM = [
          kick="31 KILLED",
          head="TANKER FIRE KILLS 31 ON CAIRO RING ROAD",
          body=("A fuel tanker overturns at 18:08 local and explodes: 31 dead, "
-               "21 hurt, 27 vehicles burned. 14 bus passengers who helped "
-               "died.")),
+               "21 hurt, 27 vehicles burned; 14 who stopped to help died.")),
     dict(num="11", place="CAPE TOWN", tag="C", icon="gavel",
          kick="PANEL VOID",
-         head="COURT VOIDS FARMGATE PANEL — RAMAPHOSA CLEAR",
-         body=("The High Court scraps the 2022 Section 89 report as unlawful; "
-               "impeachment falls away. The $580,000 case is no criminal "
-               "trial.")),
+         head="FARMGATE PANEL VOID; RAMAPHOSA CLEAR",
+         body=("High Court scraps the 2022 Section 89 report as unlawful; "
+               "impeachment falls away. The $580,000 case is no trial.")),
     dict(num="12", place="HODEIDAH", tag="C", icon="crane",
          kick="PORT STRUCK",
          head="COALITION HITS HODEIDAH; 4 DRONES DOWNED",
@@ -169,59 +173,46 @@ MEDIUM = [
          head="GAZA TOLL 74,746 — 1,679 SINCE CEASEFIRE",
          body=("Health Ministry count: 74,746 killed, 176,234 hurt since Oct 2023; "
                "1,679 killed since the October 2025 ceasefire.")),
-    dict(num="14", place="ZAPORIZHZHIA", tag="R", icon="tower",
-         kick="POWER CUT",
-         head="NUCLEAR PLANT LOSES EXTERNAL POWER",
-         body=("Shelling on 25 Nov cuts the Zaporizhzhia plant's last working "
-               "external power line; emergency diesel generators take over.")),
-    dict(num="15", place="WASHINGTON", tag="C", icon="chart",
-         kick="GDP 4.3%",
-         head="U.S. ECONOMY BEATS: GDP 4.3%, CORE PCE 3.3%",
-         body=("Q3 growth revised up from 3.4% to 4.3%; October core inflation "
-               "3.3% year on year. Jobless claims 189,000.")),
 ]
 
 ALSO = [
-    ("16", "Savasleyka: 3 MiG-31 + 2 Su-34 hit at airfield", "R"),
-    ("17", "Hormuz: 2 tankers mined, IRGC claims; 'six' unverified", "CL"),
-    ("18", "U.S. weighs strikes on senior Iranian leaders", "R"),
-    ("19", "Russia war deaths 490,000+ in leaked records", "R"),
-    ("20", "Ukraine drone hits Russian cargo ship, Gulf of Finland", "R"),
-    ("21", "Russian drones enter Polish airspace", "R"),
-    ("22", "Kryvyi Rih missile: 2 killed, 60 injured", "R"),
-    ("23", "Sahel: FPV drones reshape the desert war (Reuters)", "R"),
-    ("24", "Russia warned over nuclear-armed satellite", "R"),
-    ("25", "Amnesty urges ICC probe of Gaza war crimes", "R"),
-    ("26", "Taiz: 350,000 children missed measles vaccines", "C"),
-    ("27", "Odesa: 80,000 homes without heat", "C"),
-    ("28", "UK warns Ukraine suppliers on Russian sabotage", "R"),
-    ("29", "Estonia: Russia says 'on verge of triggering open war'", "CL"),
-    ("30", "U.S. pauses joint military ops with Ecuador", "R"),
-    ("31", "Chen Jining, top Beijing aide, under investigation", "R"),
-    ("32", "Sarkozy + Carla Bruni ordered to stand trial", "R"),
-    ("33", "Myanmar landmine victims 1,891 in 2025", "R"),
-    ("34", "Cikande candy factory fire kills 26", "R"),
-    ("35", "Japan PMI 53.7 — factories speed up", "C"),
-    ("36", "Australia inflation: trimmed mean 3.8%", "C"),
-    ("37", "Brent $90.97, WTI $81.58", "C"),
-    ("38", "Bitcoin $59,258, Ether $1,660", "C"),
-    ("39", "U.S. retail: Dollar Tree +11%, Dick's +15%", "R"),
-    ("40", "Netflix buys Radford Studio for $380m", "R"),
-    ("41", "UCL: Real Madrid 5-1 PSV", "C"),
-    ("42", "UCL: Arsenal 1-1 Dortmund; Man City 2-2 Napoli", "C"),
-    ("43", "Rings of Power renewed for season 4", "R"),
-    ("44", "Tidal drops AI music from 9 Dec", "R"),
-    ("45", "S&P 500 slips 0.25% on tariff news", "R"),
-    ("46", "VIX up 60% in November", "R"),
-    ("47", "Gaza meningitis cases hit 272 in October", "R"),
-    ("48", 'Microsoft "Code Red" after 24-hour outage', "R"),
-    ("49", "Zaporizhzhia: 6 hurt in 25 Nov strike, 2 children", "R"),
-    ("50", "UNSC emergency talks on Iran attacks", "R"),
-    ("51", "Qatar-U.S. sign AI + critical minerals deals", "R"),
-    ("52", "Kherson aid convoy reaches 600 residents left", "C"),
-    ("53", "U.S. jobless claims 189,000", "C"),
-    ("54", "Israel: Eisenkot seals pact with Lieberman", "R"),
-    ("55", "Gaza: 1 killed in strike on displacement camp", "R"),
+    ("14", "Savasleyka: 3 MiG-31 + 2 Su-34 hit at airfield", "R"),
+    ("15", "U.S. weighs strikes on senior Iranian leaders", "R"),
+    ("16", "Russia war deaths 490,000+ in leaked records", "R"),
+    ("17", "Ukraine drone hits Russian cargo ship, Gulf of Finland", "R"),
+    ("18", "Russian drones enter Polish airspace", "R"),
+    ("19", "Kryvyi Rih missile: 2 killed, 60 injured", "R"),
+    ("20", "Sahel: FPV drones reshape the desert war (Reuters)", "R"),
+    ("21", "Russia warned over nuclear-armed satellite", "R"),
+    ("22", "Amnesty urges ICC probe of Gaza war crimes", "R"),
+    ("23", "Taiz: 350,000 children missed measles vaccines", "C"),
+    ("24", "Odesa: 80,000 homes without heat", "C"),
+    ("25", "UK warns Ukraine suppliers on Russian sabotage", "R"),
+    ("26", "U.S. pauses joint military ops with Ecuador", "R"),
+    ("27", "Chen Jining, top Beijing aide, under investigation", "R"),
+    ("28", "Sarkozy + Carla Bruni ordered to stand trial", "R"),
+    ("29", "Myanmar landmine victims 1,891 in 2025", "R"),
+    ("30", "Cikande candy factory fire kills 26", "R"),
+    ("31", "Japan PMI 53.7 — factories speed up", "C"),
+    ("32", "Australia inflation: trimmed mean 3.8%", "C"),
+    ("33", "Brent $90.97, WTI $81.58", "C"),
+    ("34", "Bitcoin $59,258, Ether $1,660", "C"),
+    ("35", "U.S. retail: Dollar Tree +11%, Dick's +15%", "R"),
+    ("36", "Netflix buys Radford Studio for $380m", "R"),
+    ("37", "UCL: Real Madrid 5-1 PSV", "C"),
+    ("38", "UCL: Arsenal 1-1 Dortmund; Man City 2-2 Napoli", "C"),
+    ("39", "Rings of Power renewed for season 4", "R"),
+    ("40", "Tidal drops AI music from 9 Dec", "R"),
+    ("41", "S&P 500 slips 0.25% on tariff news", "R"),
+    ("42", "Zaporizhzhia: 6 hurt in 25 Nov strike, 2 children", "R"),
+    ("43", "ZNPP: nuclear plant loses external power", "R"),
+    ("44", "UNSC emergency talks on Iran attacks", "R"),
+    ("45", "Qatar-U.S. sign AI + critical minerals deals", "R"),
+    ("46", "Kherson aid convoy reaches 600 residents left", "C"),
+    ("47", "U.S. jobless claims 189,000", "C"),
+    ("48", "U.S. GDP revised up to 4.3%; core PCE 3.3%", "C"),
+    ("49", "Israel: Eisenkot seals pact with Lieberman", "R"),
+    ("50", "Gaza: 1 killed in strike on displacement camp", "R"),
 ]
 
 TIMELINE = [
@@ -233,17 +224,19 @@ TIMELINE = [
     ("16:08", "Giza tanker explodes, 31 killed"),
 ]
 
-REGIONS = [("Europe", 16), ("Middle East", 12), ("North America", 8),
-           ("Global", 5), ("East Asia", 4), ("Southeast Asia", 3),
-           ("Africa", 2), ("Latin America", 2), ("Oceania", 2),
+# Region per story (subject/location, not actor). Sums to 50.
+REGIONS = [("Europe", 16), ("Middle East", 9), ("North America", 6),
+           ("East Asia", 4), ("Global", 4), ("Southeast Asia", 3),
+           ("Africa", 3), ("Latin America", 2), ("Oceania", 2),
            ("South Asia", 1)]
 
-FIELDS = [("Strikes", 6), ("Airspace & warnings", 6), ("Stocks", 4),
-          ("Disaster", 4), ("Courts & politics", 4), ("Ukraine war", 4),
-          ("Economy", 4), ("Gaza war", 3), ("Culture", 3), ("Sport", 2),
-          ("Space", 2), ("Energy", 2), ("Health", 2), ("Diplomacy", 2),
-          ("Trade", 1), ("Commodities", 1), ("Crypto", 1),
-          ("Defence pacts", 1), ("Labour", 1), ("Crime", 1), ("Tech", 1)]
+# Field per story (type of event). Sums to 50.
+FIELDS = [("Ukraine war", 5), ("Disaster", 5), ("Courts & politics", 5),
+          ("Strikes", 5), ("Economy", 4), ("Stocks", 3),
+          ("Airspace & warnings", 3), ("Diplomacy", 3), ("Energy", 2),
+          ("Gaza war", 2), ("Culture", 2), ("Sport", 2), ("Trade", 1),
+          ("Space", 1), ("Defence pacts", 1), ("Labour", 1), ("Crime", 1),
+          ("Health", 1), ("Commodities", 1), ("Crypto", 1), ("Tech", 1)]
 
 DATE_CHECK = ("NOT 25 NOV — EXCLUDED: Riyadh Houthi missile (24 Nov) · Dell Q3 "
               "(24 Nov) · Sanofi–Insmed (24 Nov) · Miley Cyrus wedding (21 Nov) · "
@@ -260,16 +253,14 @@ NOT_YET = ("NOT YET: US Thanksgiving (26 Nov) · Bank of Korea decision "
 PINS = [("1", -77, 39), ("2", 127, 37.5), ("3", 98, 40), ("4", -0.1, 51.5),
         ("5", 149, -35), ("6", 90, 23.8), ("7", -75.5, 10.4),
         ("8", 50, 53), ("9", 107, -6.6), ("10", 31, 30), ("11", 18.4, -34),
-        ("12", 43, 15), ("13", 34.5, 31.5), ("14", 35, 47.8),
-        ("15", -77, 39)]
-PIN_NUDGE = {"13": (8, 8), "15": (14, 10), "10": (-4, 2)}
+        ("12", 43, 15), ("13", 34.5, 31.5)]
+PIN_NUDGE = {"13": (8, 8), "10": (-4, 2)}
 PIN_KEY = ("1 Washington (tariffs) · 2 Seoul · 3 Jiuquan · 4 London · "
            "5 Canberra · 6 Dhaka · 7 Cartagena · 8 Samara · 9 Bogor · "
-           "10 Giza · 11 Cape Town · 12 Hodeidah · 13 Gaza · "
-           "14 Zaporizhzhia · 15 Washington (US data)")
+           "10 Giza · 11 Cape Town · 12 Hodeidah · 13 Gaza")
 
 # ---------------------------------------------------------------- illustrations
-def illo_tariffs(d, x, y, w, h):
+def illo_tariffs(img, d, x, y, w, h):
     """Container ship + rising tariff bars."""
     d.rectangle([x, y, x + w, y + h], fill=(226, 236, 242), outline=RULE)
     # sky bars: tariff rates rising (fit inside the illustration)
@@ -295,7 +286,7 @@ def illo_tariffs(d, x, y, w, h):
         d.arc([wx, y + h - 8, wx + 34, y + h + 4], 180, 360, fill=BLUE, width=2)
 
 
-def illo_kospi(d, x, y, w, h):
+def illo_kospi(img, d, x, y, w, h):
     """Plunging chart + chip."""
     d.rectangle([x, y, x + w, y + h], fill=(242, 228, 228), outline=RULE)
     # grid
@@ -321,9 +312,23 @@ def illo_kospi(d, x, y, w, h):
                fill=GOLD, width=2)
 
 
-def illo_shenzhou(d, x, y, w, h):
-    """Rocket + station over Earth arc."""
+def illo_shenzhou(img, d, x, y, w, h):
+    """Rocket + station over Earth arc.
+
+    v2 BUG FIX: the Earth arc used to be drawn straight onto the page,
+    and its arms swept down past the illustration into the body text
+    (the blue swoosh across feature 3's first body line, and into
+    feature 2's column). The arc is now drawn on a layer the exact size
+    of the illustration and pasted with its own alpha mask, so nothing
+    can spill past the illustration's edges.
+    """
     d.rectangle([x, y, x + w, y + h], fill=(22, 38, 64), outline=RULE)
+    # Earth arc, clipped to the illustration rect via a layer
+    layer = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    ld = ImageDraw.Draw(layer)
+    ld.arc([-60, h - 6, w + 60, h + 90], 180, 360,
+           fill=(90, 160, 220, 255), width=5)
+    img.paste(layer, (x, y), layer)
     # stars
     for sx, sy in [(20, 12), (70, 22), (150, 10), (230, 18), (290, 12),
                    (40, 40), (190, 30), (260, 38), (110, 16)]:
@@ -338,7 +343,7 @@ def illo_shenzhou(d, x, y, w, h):
     d.rectangle([stx + 76, sty + 4, stx + 102, sty + 24], fill=BLUE,
                 outline=(255, 255, 255))
     d.ellipse([stx + 30, sty + 9, stx + 46, sty + 19], fill=GOLD)
-    # rocket (fits inside the 66px illustration)
+    # rocket (fits inside the illustration)
     rx, ry = x + 60, y + 14
     d.polygon([(rx + 8, ry), (rx + 16, ry + 12), (rx + 16, ry + 36),
                (rx + 8, ry + 36), (rx, ry + 12)], fill=(255, 255, 255),
@@ -350,15 +355,12 @@ def illo_shenzhou(d, x, y, w, h):
               fill=RED)
     d.polygon([(rx + 4, ry + 36), (rx + 8, ry + 52), (rx + 12, ry + 36)],
               fill=(255, 180, 60))
-    # Earth arc (only the limb shows at the bottom)
-    d.arc([x - 60, y + h - 6, x + w + 60, y + h + 90], 180, 360,
-          fill=(90, 160, 220), width=6)
-    d.text((x + w - 72, y + h - 14), "TIANGONG", font=SANS_B(9),
+    d.text((x + w - 72, y + h - 18), "TIANGONG", font=SANS_B(9),
            fill=(255, 255, 255))
 
 
 def icon(d, kind, x, y, s=26):
-    """Small 26x26 pictogram for a medium cell."""
+    """Small pictogram for a medium cell."""
     d.rectangle([x, y, x + s, y + s], fill=TAN, outline=RULE)
     if kind == "bolt":
         d.polygon([(x + 15, y + 2), (x + 7, y + 15), (x + 13, y + 15),
@@ -434,7 +436,6 @@ ILLUSTRATIONS = {"tariffs": illo_tariffs, "kospi": illo_kospi,
                  "shenzhou": illo_shenzhou}
 BIG_ILLUSTRATION = ["tariffs", "kospi", "shenzhou"]
 
-
 # ---------------------------------------------------------------- world map
 CONTINENTS = {
     "NA": [(-168, 66), (-140, 70), (-120, 72), (-95, 70), (-80, 73),
@@ -497,7 +498,7 @@ def build():
     tw = d.textlength(title, font=tf)
     d.text(((W - tw) / 2, 6), title, font=tf, fill=INK)
     d.line([(M, 50), (W - M, 50)], fill=INK, width=2)
-    sub = ("WEDNESDAY 25 NOVEMBER 2026  ·  55 STORIES  ·  10 REGIONS  ·  "
+    sub = ("WEDNESDAY 25 NOVEMBER 2026  ·  50 STORIES  ·  10 REGIONS  ·  "
            "21 FIELDS  ·  DRAWN BY HAND IN CODE — NO PHOTOGRAPHS")
     sf = SANS_B(10)
     d.text(((W - d.textlength(sub, font=sf)) / 2, 54), sub, font=sf,
@@ -515,8 +516,8 @@ def build():
             d.text((x + 8, ly), ln, font=SANS(8), fill=MUTED)
             ly += 9
 
-    # ---- big features (y 112..306)
-    by0, by1 = 112, 306
+    # ---- big features (y 112..320)
+    by0, by1 = 112, 320
     colw = (CW - 2 * 8) // 3
     for i, b in enumerate(BIG):
         x = M + i * (colw + 8)
@@ -529,67 +530,67 @@ def build():
         head_lines = fit_lines(d, b["head"], SANS_B(15), colw - 16, 2)
         py = draw_lines(d, head_lines, px, py, SANS_B(15), INK, 17)
         py += 3
-        ILLUSTRATIONS[BIG_ILLUSTRATION[i]](d, px, py, colw - 16, 66)
-        py += 70
+        ILLUSTRATIONS[BIG_ILLUSTRATION[i]](img, d, px, py, colw - 16, 74)
+        py += 78
         body_lines = fit_lines(d, b["body"], SANS(10), colw - 16, 3)
-        py = draw_lines(d, body_lines, px, py, SANS(10), INK, 12)
+        py = draw_lines(d, body_lines, px, py, SANS(10), INK, 13)
         py += 2
         why_lines = fit_lines(d, b["why"], SANS_O(9), colw - 16, 2)
         py = draw_lines(d, why_lines, px, py, SANS_O(9), MUTED, 11)
         assert py <= by1 - 4, "big feature %s overflows" % b["num"]
 
-    # ---- medium grid (y 310..594): 4 cols x 3 rows
-    my0 = 310
-    cellw = (CW - 3 * 8) // 4
-    cellh = 92
+    # ---- medium grid (y 326..538): 5 cols x 2 rows
+    my0 = 326
+    cellw = 192
+    cellh = 106
     for i, m in enumerate(MEDIUM):
-        r, c = divmod(i, 4)
-        x = M + c * (cellw + 8)
+        r, c = divmod(i, 5)
+        x = M + c * (cellw + 9)
         y = my0 + r * (cellh + 4)
         d.rectangle([x, y, x + cellw, y + cellh], fill=CARD, outline=RULE)
-        px, py = x + 8, y + 5
-        icon(d, m["icon"], px, py, 26)
-        d.text((px + 32, py), m["num"] + " · " + m["place"],
-               font=SANS_B(9), fill=RED)
-        d.text((px + 32, py + 11), m["kick"], font=SANS_B(9), fill=DARKBLUE)
+        px, py = x + 8, y + 6
+        icon(d, m["icon"], px, py, 28)
+        d.text((px + 34, py), m["num"] + " · " + m["place"],
+               font=SANS_B(10), fill=RED)
+        d.text((px + 34, py + 12), m["kick"], font=SANS_B(10), fill=DARKBLUE)
         tag_chip(d, x + cellw - 30, py + 1, m["tag"])
-        py += 28
+        py += 34
         head_lines = fit_lines(d, m["head"], SANS_B(11), cellw - 16, 2)
         py = draw_lines(d, head_lines, px, py, SANS_B(11), INK, 12)
         body_lines = fit_lines(d, m["body"], SANS(8), cellw - 16, 3)
-        py = draw_lines(d, body_lines, px, py, SANS(8), INK, 10)
+        py = draw_lines(d, body_lines, px, py, SANS(8), INK, 11)
         assert py <= y + cellh - 3, "medium %s overflows" % m["num"]
 
     return img, d
 
 def build_rest(img, d):
-    # ---- ALSO (y 598..740): 3 columns x 14 rows
-    ay0 = 598
+    # ---- ALSO (y 548..733): 3 columns x 13 rows
+    ay0 = 548
     d.text((M, ay0), "ALSO — THE REST OF THE DAY",
            font=SANS_B(12), fill=INK)
     d.line([(M + 218, ay0 + 8), (W - M, ay0 + 8)], fill=RULE, width=1)
     colw = (CW - 2 * 10) // 3
-    rows = 14
+    rows = 13
     for i, (num, text, tag) in enumerate(ALSO):
         col, row = divmod(i, rows)
         x = M + col * (colw + 10)
-        y = ay0 + 16 + row * 9
+        y = ay0 + 16 + row * 13
         line = num + ". " + text
-        # shrink font if the line is too long for its column
-        f = SANS(8)
+        # bigger type than v2 (9pt, was 8pt); shrink only if it must
+        f = SANS(9)
         if d.textlength(line, font=f) > colw - 16:
-            f = SANS(7)
+            f = SANS(8)
         assert d.textlength(line, font=f) <= colw - 16, \
             "ALSO %s too long: %r" % (num, line)
         d.text((x, y), line, font=f, fill=INK)
         tag_chip(d, x + colw - 16, y, tag)
 
-    # ---- map + timeline (y 744..858)
-    ty0 = 744
+    # ---- map + timeline (y 742..856)
+    ty0 = 742
     d.line([(M, ty0 - 4), (W - M, ty0 - 4)], fill=INK, width=1)
     # map (left, 500 wide)
     map_w = 500
-    d.text((M, ty0), "WHERE IT HAPPENED — PINS 1–15 (SCHEMATIC)",
+    d.text((M, ty0), "WHERE IT HAPPENED — PINS 1–13 (SCHEMATIC)",
            font=SANS_B(10), fill=INK)
     draw_map(d, M, ty0 + 15, map_w, 76)
     key_lines = wrap(d, PIN_KEY, SANS(8), map_w)
@@ -613,14 +614,14 @@ def build_rest(img, d):
     # ---- region bar (y 860..878)
     ry = 860
     d.line([(M, ry - 2), (W - M, ry - 2)], fill=RULE, width=1)
-    reg = "REGIONS (55): " + "  ·  ".join(
+    reg = "REGIONS (50): " + "  ·  ".join(
         "%s %d" % (name, n) for name, n in REGIONS)
     assert d.textlength(reg, font=SANS(10)) <= CW, "region bar too long"
     d.text((M, ry), reg, font=SANS(10), fill=INK)
 
-    # ---- fields bar (y 880..910, two lines)
+    # ---- fields bar (y 880..906, two lines)
     fy = 880
-    fld = "FIELDS (55): " + "  ·  ".join(
+    fld = "FIELDS (50): " + "  ·  ".join(
         "%s %d" % (name, n) for name, n in FIELDS)
     fld_lines = wrap(d, fld, SANS(10), CW)
     assert len(fld_lines) <= 2, "fields bar too long"
@@ -628,8 +629,8 @@ def build_rest(img, d):
         d.text((M, fy), ln, font=SANS(10), fill=INK)
         fy += 13
 
-    # ---- DATE CHECK + NOT YET (y 914..966)
-    dy = 914
+    # ---- DATE CHECK + NOT YET (y 912..964)
+    dy = 912
     d.line([(M, dy - 2), (W - M, dy - 2)], fill=RULE, width=1)
     dc_w = 640
     d.text((M, dy), "DATE CHECK", font=SANS_B(10), fill=RED)
@@ -648,8 +649,8 @@ def build_rest(img, d):
         d.text((nx, yy), ln, font=SANS(8), fill=INK)
         yy += 10
 
-    # ---- footer (y 970..1014)
-    fy2 = 970
+    # ---- footer (y 968..1012)
+    fy2 = 968
     d.line([(M, fy2 - 2), (W - M, fy2 - 2)], fill=INK, width=1)
     legend = ("TAGS:  C = CONFIRMED (official source)   ·   R = REPORTED   ·   "
               "CL = CLAIM (unverified)")
