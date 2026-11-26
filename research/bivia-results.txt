@@ -1,0 +1,269 @@
+=== Q1 Dhaka 17000 ===
+{
+  "type": "boolean",
+  "value": "yes",
+  "probability": 0.9867181523120983,
+  "distribution": {
+    "yes": 0.9867181523120983,
+    "no": 0.01328184768790177
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": true,
+    "result": "passed"
+  },
+  "evidence": {
+    "spans": [
+      {
+        "start": 31,
+        "end": 167,
+        "text": "the board set Tk17,000 after a 4-2 vote, announced after 4am Wednesday 25 Nov by chairman Syed Azad Subhani; 17000/12500 = 1.36 exactly."
+      }
+    ]
+  },
+  "latency_ms": 6535.8,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 2487,
+  "image_tokens": 0,
+  "billable_tokens": 2487
+}
+
+=== Q2 Tariffs 14 partners 20pct China ===
+{
+  "type": "boolean",
+  "value": "yes",
+  "probability": 0.9889371907142415,
+  "distribution": {
+    "yes": 0.9889371907142415,
+    "no": 0.011062809285758559
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": false,
+    "result": "not_applicable"
+  },
+  "evidence": {
+    "spans": []
+  },
+  "latency_ms": 2056.6,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 636,
+  "image_tokens": 0,
+  "billable_tokens": 1000
+}
+
+=== Q3 KOSPI close ===
+{
+  "type": "boolean",
+  "value": "yes",
+  "probability": 0.9973479023737569,
+  "distribution": {
+    "yes": 0.9973479023737569,
+    "no": 0.00265209762624309
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": true,
+    "result": "passed"
+  },
+  "evidence": {
+    "spans": [
+      {
+        "start": 0,
+        "end": 156,
+        "text": "WSJ/Reuters: KOSPI closed 4,697.51, down 308.52 points (-6.16 percent, reported as -6.2 percent), lowest close since Jan 13; Samsung -9.87 percent, SK hynix"
+      }
+    ]
+  },
+  "latency_ms": 10251.2,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 2145,
+  "image_tokens": 0,
+  "billable_tokens": 2145
+}
+
+=== Q4 Shenzhou first foreigner ===
+{
+  "type": "boolean",
+  "value": "yes",
+  "probability": 0.9957991801317699,
+  "distribution": {
+    "yes": 0.9957991801317699,
+    "no": 0.004200819868230059
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": true,
+    "result": "passed"
+  },
+  "evidence": {
+    "spans": [
+      {
+        "start": 0,
+        "end": 162,
+        "text": "Xinhua/CMSA: launch 25 Nov 2026 00:18:52 UTC from Jiuquan; docked Tianhe 03:56 UTC; crew Tang Hongbo, Wu Yi, Muhammad Zeeshan Ali (Pakistan payload specialist, ex"
+      }
+    ]
+  },
+  "latency_ms": 9288.8,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 2460,
+  "image_tokens": 0,
+  "billable_tokens": 2460
+}
+
+=== Q5 Ofgem 26pct ===
+{
+  "type": "boolean",
+  "value": "yes",
+  "probability": 0.991422514586288,
+  "distribution": {
+    "yes": 0.991422514586288,
+    "no": 0.008577485413711984
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": true,
+    "result": "passed"
+  },
+  "evidence": {
+    "spans": [
+      {
+        "start": 0,
+        "end": 149,
+        "text": "Ofgem announced Wed 25 Nov: cap +25.7 percent from 1 Jan; typical dual-fuel direct debit 1,723 to 2,166 pounds (+443/yr); electricity 26.32p to 32.69"
+      }
+    ]
+  },
+  "latency_ms": 4858.4,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 1447,
+  "image_tokens": 0,
+  "billable_tokens": 1447
+}
+
+=== Q6 Hamas chief killed 24 Nov ===
+{
+  "type": "boolean",
+  "value": "no",
+  "probability": 0.9307488125965777,
+  "distribution": {
+    "yes": 0.06925118740342223,
+    "no": 0.9307488125965777
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": true,
+    "result": "passed"
+  },
+  "evidence": {
+    "spans": [
+      {
+        "start": 25,
+        "end": 146,
+        "text": "Israeli airstrike killed Naeem Abu Nahel, director of Hamas internal security apparatus, in western Gaza City on Tuesday;"
+      }
+    ]
+  },
+  "latency_ms": 4242.7,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 1170,
+  "image_tokens": 0,
+  "billable_tokens": 1170
+}
+
+=== Q7 Zaporizhzhia strike 24 Nov ===
+{
+  "type": "boolean",
+  "value": "no",
+  "probability": 0.9939466649404823,
+  "distribution": {
+    "yes": 0.006053335059517709,
+    "no": 0.9939466649404823
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": false,
+    "result": "not_applicable"
+  },
+  "evidence": {
+    "spans": []
+  },
+  "latency_ms": 2146.2,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 588,
+  "image_tokens": 0,
+  "billable_tokens": 1000
+}
+
+=== Q8 Farmgate panel voided 25 Nov ===
+{
+  "type": "boolean",
+  "value": "yes",
+  "probability": 0.9899955539394767,
+  "distribution": {
+    "yes": 0.9899955539394767,
+    "no": 0.010004446060523314
+  },
+  "status": "answered",
+  "abstain": false,
+  "abstain_reason": null,
+  "mode": "deep",
+  "thought": true,
+  "verification": {
+    "performed": true,
+    "result": "passed"
+  },
+  "evidence": {
+    "spans": [
+      {
+        "start": 29,
+        "end": 262,
+        "text": "full bench (Mabindla-Boqwana, Sher, Mayosi, unanimous) set aside the panel report chaired by ex-Chief Justice Sandile Ngcobo as unlawful; parliamentary impeachment process falls away; case concerns 2020 theft of about 580,000 dollars"
+      }
+    ]
+  },
+  "latency_ms": 4785.1,
+  "model": "dec-1",
+  "policy": "deep-2",
+  "input_tokens": 1306,
+  "image_tokens": 0,
+  "billable_tokens": 1306
+}
+
+ALL DONE
